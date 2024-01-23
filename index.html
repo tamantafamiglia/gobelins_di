@@ -1,0 +1,542 @@
+<!doctype HTML>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gobelins - divers projets de design interactif</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  
+  
+  <style>
+    /* ::-webkit-scrollbar{width:2px;height:2px;}
+::-webkit-scrollbar-button{width:2px;height:2px;}  */
+
+    ::-webkit-scrollbar {
+      width: .4vW;
+      height: 0vh;
+      background-color: none;
+    }
+
+    ::-webkit-scrollbar-button {
+      width: 0px;
+      height: 0px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: #fff;
+    }
+
+    div {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(150deg, #3a84f5 56%, #79dcf0 100%);
+
+      padding: 0;
+      margin: 0;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      color: #fff;
+      
+      
+    }
+    #logo {
+      width: 100%;
+    height: 100vh;
+    background: url(img/logogob.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    position: fixed;
+    top: 0;
+    opacity: .07;
+    z-index: -1;
+    }
+
+    #wrapper {
+      margin: 45vh auto 30vh auto;
+      width: 60vw;
+      max-width: 1680px;
+      /* min-height: 80vh; */
+      display: grid;
+      grid-row-gap: 2vh;
+      grid-column-gap: 2vw;
+      grid-template-columns: repeat(4, auto);
+      /* grid-template-rows: repeat(3, auto); */
+      justify-items: center;
+      align-items: center;
+      justify-content: space-between;
+      align-content: start;
+      position: relative;
+    }
+    sup {
+      font-size: 60%;
+    }
+
+
+    .projet {
+      cursor: pointer;
+      position: relative;
+      height: auto;
+      overflow: hidden;
+      transition: all .3s ease-in;
+      /* border: solid 1px #66666620; */
+      border-radius: 15px;
+      top: 0;
+      padding: 0;
+      /* background-color: #000; */
+      /* display: flex; */
+      /* align-content: center; */
+      /* justify-content: center; */
+      /* align-items: center; */
+    }
+
+    .projet:hover {
+      box-shadow: 0px 10px 15px #00000070;
+      top: -5px;
+      transition: all .1s ease-in;
+    }
+
+    .projet:focus,
+    .projet:active {
+      box-shadow: 0px 10px 15px #00000070;
+      transition: all .1s ease-in;
+    }
+
+    .inside {
+      display: none;
+    }
+
+    .inside span {
+      font-size: .85vh;
+      color: #999999;
+      font-style: italic;
+    }
+
+
+
+    .projet p {
+      font-size: 1vmax;
+    }
+
+    .projet h2 {
+      position: absolute;
+      width: 100%;
+      font-family: sligoil;
+      font-size: .7rem;
+      bottom: 0;
+      left: 0;
+      color: #000;
+      margin: 0;
+      /* text-shadow: 1px 1px 15px #000; */
+      /* text-align: center; */
+      background: #ffffff;
+      padding: .2vh .4vw;
+    }
+
+
+
+    .projet img,
+    .affiche img {
+      width: 100%;
+      height: auto;
+    }
+
+    .projet a {
+      width: 100%;
+      height: 66vh;
+      border: none;
+    }
+
+
+    .affiche {
+      height: 75vh;
+      width: 70vw;
+      padding: 2vh 2vw;
+      /* border: dotted 1px #fff; */
+      z-index: 100;
+      overflow: hidden;
+      position: fixed;
+      top: 10vh;
+      transition: all .3s ease-in;
+      background: #000;
+    }
+
+    .affiche h2 {
+      color: #fff;
+      background: none;
+      font-size: 3vh;
+    }
+
+    .affiche .inside {
+      display: block;
+    }
+
+    .affiche .cover {
+      display: none;
+    }
+
+    #filtre {
+      background-color: black;
+      opacity: .6;
+      height: 100vh;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      /* left: 0; */
+      z-index: 98;
+      display: none;
+    }
+
+    #close {
+      display: none;
+      cursor: pointer;
+      color: #fff;
+      font-size: 12vh;
+      position: fixed;
+      z-index: 99;
+      bottom: 5vh;
+      right: 8vw;
+
+    }
+    a {
+      color:#fff;
+    }
+
+    #close:hover {
+      text-shadow: 2px 9px 15px #00000090;
+    }
+
+    #intro {
+      color: #fff;
+      position: fixed;
+      width: 65%;
+      /* margin: 11vh auto 5vh; */
+      font-family: sligoil;
+      font-size: 1.6vmin;
+      font-weight: 300;
+      line-height: 1.48;
+      text-wrap: balance;
+      letter-spacing: .015vmin;
+      column-count: 2;
+      left: 21%;
+      top: 5vh;
+      transform-origin: center;
+      /* transform: rotate(-6deg) skew(-25deg, -3deg); */
+      animation-name: tordre;
+      animation-duration: 2s;
+      animation-iteration-count: infinite;
+    }
+    #intro p span {
+      background-color: blue;
+      padding:.1rem;
+    }
+
+    #intro:hover {
+      animation-play-state: paused;
+      cursor:crosshair
+    }
+
+    .projet .note {
+        display: none;
+        position: absolute;
+        left: 30%;
+        cursor: cell;
+        box-shadow:2px 8px 10px #00000050;
+        line-height: 1.2vh;
+        border: dotted 1px red;
+        padding: 3px;
+        background-color: #fff;
+        font-size: 1vh;
+        /* width: 20vw; */
+      }
+
+      .projet:hover .note {
+        display:inline-block;
+        
+      }
+
+    @keyframes tordre {
+      0% {
+        transform: skew(20deg, -1deg);
+      }
+
+      30% {
+        transform: skew(3deg, -3.4deg);
+      }
+    
+      
+      60% {
+        transform: skew(2deg, -6deg);
+      }
+
+      100% {
+        transform: skew(20deg, -1deg);
+      }
+    }
+
+    @media screen and (max-width: 1680px) {
+      #wrapper {
+        grid-template-columns: repeat(6, auto);
+      }
+    }
+    @media screen and (max-width: 1080px) {
+      #wrapper {
+        grid-template-columns: repeat(4, auto);
+      }
+    }
+    @media screen and (max-width: 800px) {
+      #wrapper {
+        grid-template-columns: repeat(3, auto);
+        
+      }
+      #intro {
+          font-size: 2.4vmin;
+          width: 70%;
+          left: 16%;
+          top: 2vh;
+          column-count: 1;
+        }
+    }
+
+
+
+    .text {
+      
+      /* text-transform: uppercase;
+      font-family: "Rubik", sans-serif; */
+      font-family: sligoil;
+  
+  font-weight: 100;
+  font-style: normal;
+      
+      font-size: 9px;
+      fill: #fff;
+      letter-spacing: 0.1em;
+      
+    }
+
+    #rotatingText {
+      animation-name: rotate-circle;
+      animation-duration: 90s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    @keyframes rotate-circle {
+      to {
+        transform: rotate(1turn);
+      }
+    }
+
+    .main {
+      CONTAIN-INTRINSIC-BLOCK-SIZE: AUTO 100PX;
+      position: fixed;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      bottom: 0;
+      right: 0;
+    }
+
+    .main img {
+      position: absolute;
+    }
+
+    .main img {
+      position: absolute;
+      animation-name: rotate-circle;
+      animation-direction: reverse;
+      animation-duration: 25s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+
+      filter: drop-shadow(0px 0px 5px #333);
+    }
+
+    @font-face {
+  font-family: sligoil;
+  src: url(fonts/web/Sligoil-Micro.woff2);
+  font-weight: bold;
+}
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <!-- <img src="https://www.kirupa.com/icon/1f354.svg" width="50" height="50"> -->
+    <svg id="rotatingText" viewBox="0 0 200 200" width="800" height="800">
+      <defs>
+        <path id="circle" d="M 100, 100
+                m -75, 0
+                a 75, 75 0 1, 0 150, 0
+                a 75, 75 0 1, 0 -150, 0
+                ">
+        </path>
+      </defs>
+      <text width="400">
+        <textPath alignment-baseline="top" xlink:href="#circle" class="text">
+          ↢ Gobelins ↻ design interactif ↩ Gobelins ↻ design interactif ↩ 
+        </textPath>
+      </text>
+    </svg>
+  </div>
+  <div id="logo"></div>
+    
+      
+
+  <div id="intro"><p>En fin de 1<sup>re</sup> année et durant la 2<sup>e</sup> année, les étudiants abordent des projets plus importants, et en groupe. Qu’ils soient en classe orientée design ou code, ils associent leurs différents savoir-faire pour répondre à un sujet ou inscrire leur projet dans une thématique.</p>
+    <p>Il s’agit alors pour eux de gérer le développement de leur projet en passant par des phases précises. Recherche de références et documentation sur laquelle ils doivent fonder leur proposition, mise en forme et réalisation.</p>
+    <p>Un projet de type interactif, est par nature multimédia. Textes, images, sons, animations, interactions, il faut gérer ses différentes composantes et les assembler dans une mise en scène capable de délivrer un message, une émotion, directement ou indirectement.</p>
+    <p>Ces différents projets peuvent être appliqués, comme la conception d’un design système, en 1<sup>re</sup> année, ou plus éditoriaux en 2<sup>e</sup> année comme les projets <span>Web+Play</span>, où les étudiants doivent travailler la dimension ludique du webdesign. Cela peut aussi être un projet de type <span>Fil-rouge</span>, qu'ils développent en autonomie dirigée.</p>
+    
+  </div>
+  <div id="wrapper">
+
+    <!--Projet 01-->
+    <a class="projet"
+      href="https://www.figma.com/proto/KIL1BU5NdY3tVPprokRw30/Fil-rouge?node-id=293-7&starting-point-node-id=310%3A66&scaling=scale-down-width&mode=design&t=IAyDvXzXE5WD9IXN-1"
+      target="blank">
+      
+        
+      <h2>Nathan Nicoleau <br> Idées noires <br> Projet Fil-rouge, 2<sup>e</sup> année</h2>
+      <img src="img/nathan-nicoleau.jpeg" class="cover">
+    </a>
+
+   
+    
+
+    <!--Projet 02-->
+    <a class="projet"
+      href="https://exode-solitaire.netlify.app/"
+      target="blank">
+      <h2>Pierre-Alexis Maldera, Sally Bangoura, Tara Moraes Cellier et Simon Gaspar<br> Exode Solitaire <br> Projet Web+play, 2<sup>e</sup> année</h2>
+      <img src="img/pierre-alexis-maldera-sally-bangoura-tara-moraes-cellier-simon-gaspar.jpeg" class="cover">
+    </a>
+
+
+
+    <!--Projet 03-->
+    <a class="projet"
+      href="https://clickmii.glitch.me/"
+      target="blank">
+      <h2>Lucie Monvoisin, Alexandre Besneux et Paul Colin<br> Clickmii <br> Projet Web+play, 2<sup>e</sup> année</h2>
+      <img src="img/lucie-monvoisin-alexandre-besneux-paul-colin.jpeg" class="cover">
+    </a>
+
+
+    <!--Projet 04-->
+    <a class="projet"
+      href="sites\curiosity-lyes-bouhadjila\index.html"
+      target="blank">
+      <h2>Lyes Bouhadjila<br> Curiosity <br> Projet Web+play, 2<sup>e</sup> année</h2>
+      <img src="img/lyes-bouhadjila.jpeg" class="cover">
+    </a>
+
+
+
+
+    <!--Projet 05-->
+    <a class="projet"
+      href="https://thomas-berg.fr/gobelins/cursy/"
+      target="blank">
+      <h2>Nathan Nicoleau, Thomas Berg, Raphael Zarhouni et Alix Vigneron-Sebastianis<br> Cursy <br> Projet Web+play, 2<sup>e</sup> année</h2><img src="img/nathan-nicoleau-thomas-berg-raphael-zarhouni-alix-vigneron-sebastianis.jpeg" class="cover">
+    </a>
+
+
+    <!--Projet 06-->
+    <a class="projet"
+      href="https://thomas-berg.fr/gobelins/space-mono/"
+      target="blank">
+      <h2>Thomas Berg <br> Space-mono <br> Projet Construct, 2<sup>e</sup> année</h2>
+      <img src="img/thomas-berg.jpeg" class="cover">
+    </a>
+
+
+    <!--Projet 07-->
+    <a class="projet"
+      href="https://madebyamb.github.io/vartype/"
+      target="blank">
+      <h2>Ambroise Nicolao et Danny Lahcene<br> VarType <br> Projet Web+play, 2<sup>e</sup> année</h2><img src="img/ambroise-nicolao-danny-lahcene.jpeg" class="cover">
+    </a>
+
+
+
+
+    <!--Projet 08-->
+    <a class="projet"
+      href="https://thomas-berg.fr/gobelins/n26/"
+      target="blank">
+      <h2>Thomas Berg et Nathan Nicoleau<br> N26 <br> Projet Design system, 1<sup>re</sup> année</h2><img src="img/thomas-berg-nathan-nicoleau.jpeg" class="cover">
+    </a>
+
+
+
+    
+
+
+
+
+  </div><!-- Fin wrapper -->
+
+  <script>
+
+    /*document.getElementById('activ').addEventListener('mouseover', function() { }, false);*/
+    function openproj(x) {
+      document.getElementById("filtre").style.display = "block";
+      document.getElementById("close").style.display = "block";
+      document.getElementById("projet" + x).classList.add("affiche");
+      //document.getElementById("inside"+x).style.display = "block";
+    }
+
+
+    // Ici on referme la div galerie, ainsi que toutes div se trouvant dedans, comme ça une seule fonction marche pour toutes les images
+    function closeproj() {
+      document.getElementById("filtre").style.display = "none";
+      document.getElementById("close").style.display = "none";
+
+
+
+      var a = document.getElementById("wrapper");
+      var b = a.getElementsByTagName("div");
+      var c = document.getElementsByClassName("inside");
+
+      var i;
+      for (i = 0; i < b.length; i++) {
+        b[i].classList.remove("affiche");
+      }
+      //       var o;
+      //       for (o = 0; o < c.length; o++) {
+      //       c[o].style.display = "none";
+      //       }
+
+      //       var insideDivs = document.querySelectorAll(".inside");
+
+      // for (var i = 0; i < insideDivs.length; i++) {
+      //   if (insideDivs[i].style.display === "none") {
+      //     var as = insideDivs[i].querySelectorAll("a");
+      //     for (var j = 0; j < as.length; j++) {
+      //       as[j].parentNode.removeChild(as[j]);
+      //     }
+      //   }
+      // }
+
+
+
+    }
+
+
+
+  </script>
+
+</body>
+
+
+
+
+</html>
